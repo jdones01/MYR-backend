@@ -2,12 +2,16 @@ let jwt = require('jsonwebtoken');
 let bcrypt = require('bcryptjs');
 const {OAuth2Client} = require('google-auth-library');
 
+let {Mutex} = require("async-mutex");
+
 let config = require('../config/config');
 let UserModel = require('../models/UserModel.js');
 let GoogleLoginModel = require("../models/GoogleLoginModel");
 
 const CLIENTID = process.env.GOOGLE_OAUTH2_CLIENTID;
 const client = new OAuth2Client(CLIENTID);
+
+const lock = new Mutex();
 
 // let sync = require('synchronize');
 // let fiber = sync.fiber;
@@ -28,6 +32,7 @@ module.exports = {
             }catch(err){}
 
             if(!user){
+                let release = await lock.acquire();
                 try{
                     user = await GoogleLoginModel.findOne({email: ticket.payload["email"]});
                     await user.update({googleId: ticket.payload["sub"]});
@@ -37,6 +42,7 @@ module.exports = {
                         googleId: ticket.payload["sub"]
                     });
                 }
+                release();
             }
 
             return user._id;
