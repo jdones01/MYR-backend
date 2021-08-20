@@ -45,6 +45,7 @@ app.use(cookieParser());
 app.use('/admin/', express.static(path.join(__dirname, 'public/admin')));
 app.use('/about/', express.static(path.join(__dirname, 'public/about')));
 app.use('/img/', express.static(path.join(__dirname, 'public/img')));
+app.use('/models/', express.static(path.join(__dirname, 'public/models')));
 app.use('/.well-known/', express.static(path.join(__dirname, 'public/.well-known')));
 app.use(express.static(path.join(__dirname, 'public/myr')));
 app.use('/docs/', express.static(path.join(__dirname, 'public/docs')));
