@@ -1,7 +1,7 @@
 const CanvasMap = require("../models/CanvasMapping");
 
 
-module.export = {
+module.exports = {
     register_canvas: async (socket, payload, socketList) => {
         const socketid = JSON.parse(payload)["scene_socket"];
 

@@ -1,8 +1,8 @@
 let Conns = require("./models/ConnectionModel");
-const CanvasMap = require("../models/CanvasMapping");
+const CanvasMap = require("./models/CanvasMapping");
 const SceneSaveEventHandlers = require("./websocketEvents/sceneSave");
 const CanvasEventHandlers = require("./websocketEvents/canvasComms");
-const io = require("socket-io");
+const io = require("socket.io");
 
 
 /**

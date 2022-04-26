@@ -6,4 +6,4 @@ let CanvasMap = new Schema({
     canvas_socket: String,
 });
 
-module.exports = mongoose.model('CanvasMapping', ConnectionModel);
+module.exports = mongoose.model('CanvasMapping', CanvasMap);
