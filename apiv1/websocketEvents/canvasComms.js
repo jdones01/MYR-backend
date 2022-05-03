@@ -22,6 +22,7 @@ module.exports = {
 
     send_data: async (socket, payload, socketList) => {
         let canvas_socket;
+        console.log(socket);
         try {
             const socketMap = await CanvasMap.findOne({code_socket: socket.id});
             canvas_socket = socketList.get(socketMap.canvas_socket);
@@ -35,7 +36,7 @@ module.exports = {
             return;
         }
 
-        canvas_socket.emit("update", payload);
+        canvas_socket.emit("render", payload);
     },
 
     remove_socket: async (socket) => {

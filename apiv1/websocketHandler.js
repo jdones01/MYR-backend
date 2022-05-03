@@ -15,7 +15,7 @@ function setupSockets(sockets) {
         socket_route(socket, "scene", SceneSaveEventHandlers.scene, sockets.sockets);
         socket_route(socket, "disconnect", SceneSaveEventHandlers.disconnect, sockets.sockets);
 
-        socket_route(socket, "update", CanvasEventHandlers.send_data, socket.sockets);
+        socket_route(socket, "render", CanvasEventHandlers.send_data, socket.sockets);
         socket_route(socket, "canvas_error", CanvasEventHandlers.send_data, socket.sockets);
         socket_route(socket, "disconnect", CanvasEventHandlers.remove_socket, socket.sockets);
         socket_route(socket, "canvas_pair", CanvasEventHandlers.register_canvas, socket.sockets);
